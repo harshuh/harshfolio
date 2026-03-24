@@ -40,7 +40,6 @@ export default function Intro({ onFinish }) {
 
   return (
     <div className="fixed inset-0 z-[999] overflow-hidden pointer-events-none">
-      {/* curved clip definition */}
       <svg width="0" height="0" aria-hidden="true">
         <defs>
           <clipPath id="introCurve" clipPathUnits="objectBoundingBox">

@@ -25,7 +25,7 @@ export default function Home() {
           {/* LEFT SIDE */}
           <div className="max-w-xl text-center md:text-left select-none">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              I am a <span className="text-green-400">Backend</span>
+              I am a <span className="text-green-400">Backend;</span>
               <br />
               Developer.
             </h1>
@@ -126,23 +126,41 @@ export default function Home() {
           </div>
         </div>
         {/* LOGO TICKER */}
-        <div className="pt-18 md:pt-24 bg-[#f5fefd]">
+        <div className="pt-20 md:pt-24 bg-[#f5fefd]">
           <div className="container mx-auto">
-            <div className="flex overflow-hidden mask-[linear-gradient(to_right,transparent,black,transparent)]">
-              <div className="flex gap-14 flex-none pr-14 animate-scroll">
-                {/* Logos */}
-                <img src="logos/image.webp" className="logo-ticker-image" />
-                <img src="logos/image1.webp" className="logo-ticker-image" />
-                <img src="logos/image2.webp" className="logo-ticker-image" />
-                <img src="logos/image3.webp" className="logo-ticker-image" />
-                <img src="logos/image4.webp" className="logo-ticker-image" />
+            <div className="overflow-hidden grayscale mask-[linear-gradient(to_right,transparent,black,transparent)]">
+              <div className="flex w-max animate-scroll">
+                {/* First set */}
+                <div className="flex gap-14 pr-14">
+                  <img
+                    src="logos/nodejsDark.svg"
+                    className="logo-ticker-image"
+                  />
+                  <img src="logos/express.svg" className="logo-ticker-image" />
+                  <img src="logos/ts.svg" className="logo-ticker-image" />
+                  <img src="logos/postman.svg" className="logo-ticker-image" />
+                  <img src="logos/mongoDb.svg" className="logo-ticker-image" />
+                  <img src="logos/redis.svg" className="logo-ticker-image" />
+                  <img src="logos/docker.svg" className="logo-ticker-image" />
+                  <img src="logos/stripe.webp" className="logo-ticker-image" />
+                  <img src="logos/github.png" className="logo-ticker-image" />
+                </div>
 
-                {/* Duplicate for infinite scroll */}
-                <img src="logos/image.webp" className="logo-ticker-image" />
-                <img src="logos/image1.webp" className="logo-ticker-image" />
-                <img src="logos/image2.webp" className="logo-ticker-image" />
-                <img src="logos/image3.webp" className="logo-ticker-image" />
-                <img src="logos/image4.webp" className="logo-ticker-image" />
+                {/* Duplicate set */}
+                <div className="flex gap-14 pr-14">
+                  <img
+                    src="logos/nodejsDark.svg"
+                    className="logo-ticker-image"
+                  />
+                  <img src="logos/express.svg" className="logo-ticker-image" />
+                  <img src="logos/ts.svg" className="logo-ticker-image" />
+                  <img src="logos/postman.svg" className="logo-ticker-image" />
+                  <img src="logos/mongoDb.svg" className="logo-ticker-image" />
+                  <img src="logos/redis.svg" className="logo-ticker-image" />
+                  <img src="logos/docker.svg" className="logo-ticker-image" />
+                  <img src="logos/stripe.webp" className="logo-ticker-image" />
+                  <img src="logos/github.png" className="logo-ticker-image" />
+                </div>
               </div>
             </div>
           </div>

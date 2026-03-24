@@ -2,7 +2,12 @@ import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const navItems = ["Projects", "About", "Contact"];
+
+  const navItems = [
+    { name: "Projects", id: "projects" },
+    { name: "About", id: "about" },
+    { name: "Contact", id: "contact" },
+  ];
 
   return (
     <header className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[94%] sm:w-[92%] max-w-6xl z-50">
@@ -11,7 +16,7 @@ export default function Header() {
           {/* Left Section */}
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <img
-              src="https://i.pravatar.cc/40"
+              src="/images/initials.jpg"
               alt="avatar"
               draggable={false}
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full shrink-0 select-none"
@@ -28,17 +33,21 @@ export default function Header() {
             <ul className="flex gap-6 lg:gap-8 text-white text-sm font-medium">
               {navItems.map((item) => (
                 <li
-                  key={item}
+                  key={item.name}
                   className="group overflow-hidden relative whitespace-nowrap select-none"
                   draggable={false}
                 >
-                  <a href="#" draggable={false} className="block select-none">
+                  <a
+                    href={`#${item.id}`}
+                    draggable={false}
+                    className="block select-none"
+                  >
                     <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[125%] group-hover:skew-y-8">
-                      {item}
+                      {item.name}
                     </div>
 
                     <div className="absolute top-0 left-0 translate-y-[125%] skew-y-8 transition duration-300 group-hover:translate-y-0 group-hover:skew-y-0">
-                      {item}
+                      {item.name}
                     </div>
                   </a>
                 </li>
@@ -47,25 +56,18 @@ export default function Header() {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 sm:gap-4 shrink-0 select-none">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 select-none">
             <a
-              href="/cv.pdf"
+              href="/assets/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               draggable={false}
-              className="select-none"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-400 text-black text-sm font-medium hover:scale-[1.03] hover:bg-green-500 transition-all duration-300 shadow-[0_8px_20px_rgba(74,222,128,0.28)]"
             >
-              <button
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                className="flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full border bg-green-400 text-gray-900 hover:border-gray-900 transition text-xs sm:text-sm select-none"
-              >
-                <span className="hidden sm:inline">Download CV</span>
-                <span className="sm:hidden">CV</span>
-              </button>
+              Download CV
             </a>
 
-            <button className="w-9 h-6 sm:w-10 sm:h-6 rounded-md bg-neutral-800 flex items-center justify-center shrink-0">
+            <button className="w-9 h-6 sm:w-10 sm:h-6 rounded-md bg-neutral-900 flex items-center justify-center shrink-0">
               <img
                 src="https://flagcdn.com/w40/in.png"
                 alt="India"
@@ -75,16 +77,17 @@ export default function Header() {
             </button>
 
             <button
-              className="md:hidden w-9 h-9 flex items-center justify-center text-white text-xl select-none"
+              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-gray-900 hover:bg-black/5 transition"
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
               draggable={false}
             >
-              {open ? "✕" : "☰"}
+              <span className="text-xl">{open ? "✕" : "☰"}</span>
             </button>
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <div
           className={`md:hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-full max-w-sm transition-all duration-300 ${
             open
@@ -96,15 +99,15 @@ export default function Header() {
             <nav>
               <ul className="flex flex-col gap-4 text-white text-sm font-medium">
                 {navItems.map((item) => (
-                  <li key={item} className="select-none">
+                  <li key={item.name} className="select-none">
                     <a
-                      href="#"
+                      href={`#${item.id}`}
                       onClick={() => setOpen(false)}
                       draggable={false}
                       onDragStart={(e) => e.preventDefault()}
                       className="block py-1 hover:text-green-400 transition select-none"
                     >
-                      {item}
+                      {item.name}
                     </a>
                   </li>
                 ))}

@@ -38,3 +38,11 @@ section {
   width: auto;
   object-fit: contain;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 20px;
+}
