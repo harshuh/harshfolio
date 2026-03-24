@@ -142,6 +142,7 @@ export default function Home() {
                   <img src="logos/mongoDb.svg" className="logo-ticker-image" />
                   <img src="logos/redis.svg" className="logo-ticker-image" />
                   <img src="logos/docker.svg" className="logo-ticker-image" />
+                  <img src="logos/Go.png" className="logo-ticker-image" />
                   <img src="logos/stripe.webp" className="logo-ticker-image" />
                   <img src="logos/github.png" className="logo-ticker-image" />
                 </div>
@@ -158,6 +159,7 @@ export default function Home() {
                   <img src="logos/mongoDb.svg" className="logo-ticker-image" />
                   <img src="logos/redis.svg" className="logo-ticker-image" />
                   <img src="logos/docker.svg" className="logo-ticker-image" />
+                  <img src="logos/Go.png" className="logo-ticker-image" />
                   <img src="logos/stripe.webp" className="logo-ticker-image" />
                   <img src="logos/github.png" className="logo-ticker-image" />
                 </div>
