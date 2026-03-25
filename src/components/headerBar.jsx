@@ -17,7 +17,7 @@ export default function Header() {
           {/* Left Section */}
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <img
-              src="/images/initials.jpg"
+              src="/images/initials.webp"
               alt="avatar"
               draggable={false}
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full shrink-0 select-none"

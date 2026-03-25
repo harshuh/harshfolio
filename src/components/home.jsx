@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const images = ["/images/profile1.jpeg", "/images/profile2.jpeg"];
+  const images = ["/images/profile1.webp", "/images/profile2.webp"];
   const [currentImage, setCurrentImage] = useState(0);
   const [fade, setFade] = useState(true);
 
