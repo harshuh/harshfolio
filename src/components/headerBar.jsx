@@ -59,10 +59,8 @@ export default function Header() {
           {/* Right Section */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0 select-none">
             <a
-              href="/assets/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              draggable={false}
+              href="/assets/Harsh_Resume.pdf"
+              download="Harsh_Resume.pdf"
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-400 text-black text-sm font-medium hover:scale-[1.03] hover:bg-green-500 transition-all duration-300 shadow-[0_8px_20px_rgba(74,222,128,0.28)]"
             >
               Download CV

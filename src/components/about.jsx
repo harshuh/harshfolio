@@ -201,7 +201,7 @@ export default function About() {
 
                   <div className="mt-6 sm:mt-8 flex justify-center lg:justify-start">
                     <a
-                      href="/assets/CV.pdf"
+                      href="/assets/Harsh_Resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-green-400 text-black rounded-lg text-base font-semibold hover:bg-green-500 transition-all duration-300"

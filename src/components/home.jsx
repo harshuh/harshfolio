@@ -3,20 +3,59 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const images = ["/images/profile1.webp", "/images/profile2.webp"];
   const [currentImage, setCurrentImage] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const scrollToProjects = () => {
+    const section = document.getElementById("projects");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
+    let isMounted = true;
 
-      setTimeout(() => {
-        setCurrentImage((prev) => (prev + 1) % images.length);
-        setFade(true);
-      }, 1000);
-    }, 12000);
+    const preloadImages = async () => {
+      try {
+        await Promise.all(
+          images.map(
+            (src) =>
+              new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = resolve;
+                img.onerror = reject;
+              }),
+          ),
+        );
+
+        if (isMounted) {
+          setImagesLoaded(true);
+        }
+      } catch (error) {
+        console.error("Image preload failed:", error);
+        if (isMounted) {
+          setImagesLoaded(true);
+        }
+      }
+    };
+
+    preloadImages();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!imagesLoaded) return;
+
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [imagesLoaded, images.length]);
 
   return (
     <div className="min-h-screen bg-[#f5fefd] text-neutral-800 overflow-hidden">
@@ -32,19 +71,20 @@ export default function Home() {
 
             <p className="mt-3 text-neutral-900 text-base sm:text-lg lg:text-xl leading-relaxed select-none">
               I specialize in building fast, reliable, and user-friendly
-              full-stack web applications.I help small businesses and startups
-              turn ideas in to high-quality websites and products that actually
+              full-stack web applications. I help small businesses and startups
+              turn ideas into high-quality websites and products that actually
               work and scale.
             </p>
 
-            {/* BUTTON */}
-            <div className="mt-6 flex justify-center md:justify-start ">
-              <button className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition text-sm sm:text-base">
+            <div className="mt-6 flex justify-center md:justify-start">
+              <button
+                onClick={scrollToProjects}
+                className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition text-sm sm:text-base"
+              >
                 Browse Projects
               </button>
             </div>
 
-            {/* SOCIALS */}
             <div className="flex justify-center md:justify-start gap-4 sm:gap-5 mt-6 text-3xl sm:text-3xl text-neutral-400 select-none">
               {[
                 {
@@ -99,38 +139,31 @@ export default function Home() {
                 select-none
               "
             >
-              <img
-                src={images[currentImage]}
-                alt="profile current"
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                className={`
-                  absolute inset-0 w-full h-full object-cover object-right
-                  transition-opacity duration-1000 ease-in-out
-                  ${fade ? "opacity-100" : "opacity-0"}
-                `}
-              />
+              {!imagesLoaded && (
+                <div className="absolute inset-0 bg-neutral-200 animate-pulse" />
+              )}
 
-              <img
-                src={images[(currentImage + 1) % images.length]}
-                alt="profile next"
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                className={`
-                absolute inset-0 w-full h-full object-cover object-right
-                transition-opacity duration-1000 ease-in-out
-                ${fade ? "opacity-0" : "opacity-100"}
-              `}
-              />
+              {images.map((src, index) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`profile ${index + 1}`}
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  className={`absolute inset-0 w-full h-full object-cover object-right transition-opacity duration-1000 ease-in-out ${
+                    currentImage === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
+
         {/* LOGO TICKER */}
         <div className="pt-20 md:pt-24 bg-[#f5fefd]">
           <div className="container mx-auto">
             <div className="overflow-hidden grayscale mask-[linear-gradient(to_right,transparent,black,transparent)]">
               <div className="flex w-max animate-scroll">
-                {/* First set */}
                 <div className="flex gap-14 pr-14">
                   <img
                     src="logos/nodejsDark.svg"
@@ -147,7 +180,6 @@ export default function Home() {
                   <img src="logos/github.png" className="logo-ticker-image" />
                 </div>
 
-                {/* Duplicate set */}
                 <div className="flex gap-14 pr-14">
                   <img
                     src="logos/nodejsDark.svg"

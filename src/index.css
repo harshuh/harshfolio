@@ -12,8 +12,10 @@
   }
 }
 
+
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #808080 #ffffff;
 }
 
 section {
