@@ -88,7 +88,7 @@ export default function About() {
             <div className="w-full flex justify-center lg:justify-start">
               <div className="w-full max-w-[420px] aspect-[16/9] sm:aspect-[3/4] rounded-[24px] overflow-hidden bg-neutral-300">
                 <img
-                  src="/images/profile2.jpeg"
+                  src="/images/profile2.webp"
                   alt="About profile"
                   draggable={false}
                   className="w-full h-full object-cover select-none"
