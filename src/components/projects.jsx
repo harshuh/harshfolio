@@ -104,12 +104,14 @@ export default function Projects() {
       draggable={false}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="mb-10 flex items-end justify-between gap-4 flex-wrap">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight ">
+        <div className="mb-10 flex items-center justify-between gap-4 flex-wrap">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight">
             Projects
           </h2>
 
-          <p className="text-sm sm:text-base text-green-400 max-w-md">
+          <div className="hidden sm:block h-[2px] flex-1 bg-black/20 translate-y-3" />
+
+          <p className="text-sm sm:text-base text-green-400 max-w-md translate-y-3">
             Tap or Hover to Explore Projects.
           </p>
         </div>
@@ -161,6 +163,11 @@ export default function Projects() {
               </div>
             </a>
           ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <button className="flex items-center gap-2 px-6 py-3 cursor-pointer rounded-full border border-green-400 text-neutral-800 hover:bg-green-400 hover:text-black transition text-sm sm:text-base">
+            View More
+          </button>
         </div>
       </div>
 

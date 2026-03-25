@@ -5,6 +5,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Services from "./components/services";
 import Projects from "./components/projects";
+import Contact from "./components/contact";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -20,6 +21,7 @@ export default function App() {
           <About />
           <Services />
           <Projects />
+          <Contact />
         </>
       )}
     </div>
