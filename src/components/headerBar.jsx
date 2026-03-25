@@ -21,7 +21,7 @@ export default function Header() {
               draggable={false}
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full shrink-0 select-none"
             />
-            <span className="text-gray-800 font-semibold text-sm sm:text-lg truncate flex items-center gap-1 font-mono tracking-wide select-none">
+            <span className="text-gray-700 font-semibold text-sm sm:text-lg truncate flex items-center gap-1 font-mono tracking-wide select-none">
               <span className="text-green-400">&lt;</span>
               <span>Harshuh</span>
               <span className="text-green-400">/&gt;</span>

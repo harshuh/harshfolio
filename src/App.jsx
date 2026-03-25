@@ -3,6 +3,7 @@ import Intro from "./components/intro";
 import Header from "./components/headerBar";
 import Home from "./components/home";
 import About from "./components/about";
+import Services from "./components/services";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -16,6 +17,7 @@ export default function App() {
           <Header />
           <Home />
           <About />
+          <Services />
         </>
       )}
     </div>

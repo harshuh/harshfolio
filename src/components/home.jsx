@@ -31,7 +31,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-3 text-neutral-900 text-base sm:text-lg lg:text-xl leading-relaxed select-none">
-              I specialize in building fast, reliable, anduser-friendly
+              I specialize in building fast, reliable, and user-friendly
               full-stack web applications.I help small businesses and startups
               turn ideas in to high-quality websites and products that actually
               work and scale.
