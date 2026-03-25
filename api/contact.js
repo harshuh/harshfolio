@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message } = req.body || {};
 
     if (!name || !email || !message) {
       return res.status(400).json({ message: "All fields are required." });
@@ -20,6 +20,18 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: "Message too short" });
     }
 
+    if (
+      !process.env.SMTP_HOST ||
+      !process.env.SMTP_PORT ||
+      !process.env.SMTP_USER ||
+      !process.env.SMTP_PASS ||
+      !process.env.RECEIVER_EMAIL
+    ) {
+      return res.status(500).json({
+        message: "Missing environment variables",
+      });
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -29,6 +41,8 @@ export default async function handler(req, res) {
         pass: process.env.SMTP_PASS,
       },
     });
+
+    await transporter.verify();
 
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
@@ -50,6 +64,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ message: "Email sent successfully." });
   } catch (error) {
     console.error("Mail error:", error);
-    return res.status(500).json({ message: "Failed to send email." });
+
+    return res.status(500).json({
+      message: error?.message || "Failed to send email.",
+    });
   }
 }

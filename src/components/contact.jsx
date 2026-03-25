@@ -8,6 +8,7 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setForm((prev) => ({
@@ -19,6 +20,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
       const res = await fetch("/api/contact", {
@@ -32,7 +34,7 @@ export default function Contact() {
       let data = {};
       try {
         data = await res.json();
-      } catch (err) {
+      } catch {
         data = {};
       }
 
@@ -48,6 +50,7 @@ export default function Contact() {
       });
     } catch (error) {
       console.log("Frontend error:", error);
+      setErrorMessage(error.message || "Failed to send message.");
       setStatus("error");
     }
   };
@@ -123,7 +126,7 @@ export default function Contact() {
 
                 {status === "error" && (
                   <p className="text-sm text-red-600 text-center">
-                    Failed to send message. Please try again.
+                    {errorMessage}
                   </p>
                 )}
               </form>
