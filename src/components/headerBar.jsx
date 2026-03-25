@@ -4,8 +4,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   const navItems = [
-    { name: "Projects", id: "projects" },
     { name: "About", id: "about" },
+    { name: "Skills", id: "skills" },
+    { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
   ];
 

@@ -4,6 +4,7 @@ import Header from "./components/headerBar";
 import Home from "./components/home";
 import About from "./components/about";
 import Services from "./components/services";
+import Projects from "./components/projects";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -18,6 +19,7 @@ export default function App() {
           <Home />
           <About />
           <Services />
+          <Projects />
         </>
       )}
     </div>
