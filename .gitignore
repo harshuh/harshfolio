@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 .zed
 .vercel
-.env*.local
 .env
+.env.local
+.env*.local
 .gitignore
