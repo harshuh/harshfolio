@@ -66,6 +66,28 @@ export default function Projects() {
     return () => cancelAnimationFrame(frameId);
   }, []);
 
+  useEffect(() => {
+    const hideCursor = () => {
+      setCursorVisible(false);
+      setActiveCard(null);
+
+      document.querySelectorAll("[data-project-card]").forEach((card) => {
+        card.style.transform =
+          "rotateX(0deg) rotateY(0deg) scale(1) translateY(0px)";
+      });
+    };
+
+    window.addEventListener("scroll", hideCursor, { passive: true });
+    window.addEventListener("wheel", hideCursor, { passive: true });
+    window.addEventListener("touchmove", hideCursor, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", hideCursor);
+      window.removeEventListener("wheel", hideCursor);
+      window.removeEventListener("touchmove", hideCursor);
+    };
+  }, []);
+
   const handleMouseMove = (e, id) => {
     if (window.innerWidth < 768) return;
 
@@ -120,6 +142,7 @@ export default function Projects() {
           {projects.map((project) => (
             <a
               key={project.id}
+              data-project-card
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -129,7 +152,6 @@ export default function Projects() {
               style={{ transformStyle: "preserve-3d" }}
               draggable={false}
             >
-              {/* preview */}
               <div className="absolute inset-0 overflow-hidden rounded-[20px] sm:rounded-[24px] md:rounded-[28px] bg-neutral-100">
                 <iframe
                   src={project.url}
@@ -139,10 +161,8 @@ export default function Projects() {
                 />
               </div>
 
-              {/* overlay */}
               <div className="absolute inset-0 bg-black/20 opacity-70 transition duration-500 md:group-hover:opacity-80" />
 
-              {/* content */}
               <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5 md:p-6">
                 <div className="translate-y-0 opacity-100 md:translate-y-5 md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                   <h3 className="text-white text-sm sm:text-lg md:text-2xl font-semibold tracking-tight">
@@ -164,14 +184,13 @@ export default function Projects() {
             </a>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
+        {/* <div className="mt-10 flex justify-center">
           <button className="flex items-center gap-2 px-6 py-3 cursor-pointer rounded-full border border-green-400 text-neutral-800 hover:bg-green-400 hover:text-black transition text-sm sm:text-base">
             View More
           </button>
-        </div>
+        </div> */}
       </div>
 
-      {/* cursor */}
       <div
         ref={cursorRef}
         className={`pointer-events-none fixed left-0 top-0 z-[999] hidden md:flex items-center justify-center transition-opacity duration-200 ${
