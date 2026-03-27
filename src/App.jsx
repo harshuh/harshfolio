@@ -13,9 +13,9 @@ export default function App() {
 
   return (
     <div className="w-full min-h-screen bg-[#f5fefd] text-neutral-900">
-      {showIntro ? (
+      {/* {showIntro ? (
         <Intro onFinish={() => setShowIntro(false)} />
-      ) : (
+      ) : ( */}
         <>
           <Header />
           <Home />
