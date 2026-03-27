@@ -16,16 +16,15 @@ export default function App() {
       {/* {showIntro ? (
         <Intro onFinish={() => setShowIntro(false)} />
       ) : ( */}
-        <>
-          <Header />
-          <Home />
-          <About />
-          <Services />
-          <Projects />
-          <Contact />
-          <Footer />
-        </>
-      )}
+      <>
+        <Header />
+        <Home />
+        <About />
+        <Services />
+        <Projects />
+        <Contact />
+        <Footer />
+      </>
     </div>
   );
 }
