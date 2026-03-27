@@ -131,7 +131,7 @@ export default function Projects() {
             Projects
           </h2>
 
-          <div className="hidden sm:block h-[2px] flex-1 bg-black/20 translate-y-3" />
+          <div className="hidden sm:block h-[2px] flex-1 bg-black/10 translate-y-3" />
 
           <p className="text-sm sm:text-base text-green-400 max-w-md translate-y-3">
             Tap or Hover to Explore Projects.
@@ -173,7 +173,7 @@ export default function Projects() {
                     {project.tags?.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/20 bg-white/10 px-2 py-1 text-[9px] sm:text-xs text-white backdrop-blur-md"
+                        className="rounded-full  border-green bg-green-300 px-2 py-1 text-[9px] sm:text-xs text-neutral-800 backdrop-blur-md"
                       >
                         {tag}
                       </span>
