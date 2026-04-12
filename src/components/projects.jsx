@@ -15,7 +15,7 @@ const projects = [
   },
   {
     id: 3,
-    name: "Aulmin Portal",
+    name: "Alumni Portal",
     url: "https://alumni.gbu.ac.in",
     tags: ["CMS", "Backend"],
   },

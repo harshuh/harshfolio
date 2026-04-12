@@ -10,7 +10,7 @@ export default function About() {
     {
       title: "Kendriya Vidyalaya Sadiq Nagar",
       subtitle: "Class XII",
-      year: "Apirl 2022",
+      year: "April 2022",
     },
     {
       title: "Kendriya Vidyalaya Noida",
